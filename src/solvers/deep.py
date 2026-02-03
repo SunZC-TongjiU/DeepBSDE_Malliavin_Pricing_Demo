@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 import time
-from .dynamics import calculate_C
+from ..dynamics import calculate_C
 
 # --- 1. 神经网络结构 (The Brain) ---
 class Net(nn.Module):

@@ -15,9 +15,13 @@ def get_config():
         
         # --- Simulation Parameters ---
         "n_steps": 100,    # Number of Euler discretization steps
-        "n_paths": 10000000, # Number of Monte Carlo paths
+        "n_paths": 1000000, # Number of Monte Carlo paths
         "dt": 0.25 / 100,  # Time step size (T / n_steps)
         
+        # --- Deep Learning Parameters ---
+        "n_epochs": 30,     # Epoch
+        "batch_size": 4096,     #Batch Size
+
         # --- Evaluation Settings ---
         "strikes": [70, 80, 90, 100, 110, 120, 130], # Strikes to evaluate (ITM to OTM)
         
