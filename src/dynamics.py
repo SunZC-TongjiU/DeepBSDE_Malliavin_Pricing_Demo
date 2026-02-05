@@ -22,6 +22,18 @@ def calculate_dC_dx(x):
     else:
         return 5.0 / np.sqrt(np.maximum(x, 1e-6))
     
+def calculate_d2C_dx2(x):
+    """
+    Computes the derivative C''(x) = -5 / sqrt(x)**3 /2.
+    Used for the Malliavin calculus correction term.
+    """
+    if torch.is_tensor(x):
+        return -2.5 / torch.sqrt(torch.maximum(x, torch.tensor(1e-6, device=x.device)))**3
+    else:
+        return -2.5 / np.sqrt(np.maximum(x, 1e-6))**3
+    
+    
+    
 # deep_bsde/dynamics.py
 import torch
 import numpy as np

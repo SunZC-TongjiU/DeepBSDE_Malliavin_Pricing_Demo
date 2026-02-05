@@ -6,8 +6,9 @@ def price_monte_carlo(cfg, seed=42, return_raw=False):
     Computes prices using Euler-Maruyama simulation.
     Ground Truth benchmark.
     """
-    T, dt = cfg["T"], cfg["dt"]
+    T= cfg["T"]
     n_paths, n_steps = cfg["n_paths"], cfg["n_steps"]
+    dt = T/n_steps
     x0, sigma0 = cfg["x0"], cfg["sigma0"]
     epsilon, rho = cfg["epsilon"], cfg["rho"]
     sqrt_dt = np.sqrt(dt)
@@ -31,7 +32,8 @@ def price_monte_carlo(cfg, seed=42, return_raw=False):
         
     prices = []
     for K in cfg["strikes"]:
-        payoff = np.maximum(x_mc - K, 0)
+        payoff = np.maximum(x_mc - K,0)
+        # payoff = x_mc**2
         
         if return_raw:
             return payoff
